@@ -1,0 +1,2453 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "2"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 2
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:25:15Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:observedGeneration: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+        f:updatedReplicas: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:26:25Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "6870"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:yellow
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 5
+  availableReplicas: 5
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:26:24Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "False"
+    type: Paused
+  - lastTransitionTime: "2022-01-16T09:26:25Z"
+    lastUpdateTime: "2022-01-16T09:26:25Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "True"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:26:25Z"
+    message: ReplicaSet "rollouts-demo-75f756d67b" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2022-01-16T09:26:25Z"
+    lastUpdateTime: "2022-01-16T09:26:25Z"
+    message: Rollout has minimum availability
+    reason: AvailableReason
+    status: "True"
+    type: Available
+  currentPodHash: 75f756d67b
+  currentStepHash: f64cdc9d
+  currentStepIndex: 8
+  observedGeneration: "2"
+  phase: Healthy
+  readyReplicas: 5
+  replicas: 5
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+  updatedReplicas: 5
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "2"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:25:15Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:observedGeneration: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+        f:updatedReplicas: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:26:25Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "6923"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 5
+  availableReplicas: 5
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:26:24Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "False"
+    type: Paused
+  - lastTransitionTime: "2022-01-16T09:26:25Z"
+    lastUpdateTime: "2022-01-16T09:26:25Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "True"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:26:25Z"
+    message: ReplicaSet "rollouts-demo-75f756d67b" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2022-01-16T09:26:25Z"
+    lastUpdateTime: "2022-01-16T09:26:25Z"
+    message: Rollout has minimum availability
+    reason: AvailableReason
+    status: "True"
+    type: Available
+  currentPodHash: 75f756d67b
+  currentStepHash: f64cdc9d
+  currentStepIndex: 8
+  observedGeneration: "2"
+  phase: Healthy
+  readyReplicas: 5
+  replicas: 5
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+  updatedReplicas: 5
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "2"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:25:15Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:message: {}
+        f:observedGeneration: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:27:34Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "6924"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 5
+  availableReplicas: 5
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:26:24Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "False"
+    type: Paused
+  - lastTransitionTime: "2022-01-16T09:26:25Z"
+    lastUpdateTime: "2022-01-16T09:26:25Z"
+    message: Rollout has minimum availability
+    reason: AvailableReason
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: Rollout "rollouts-demo" is progressing.
+    reason: ReplicaSetUpdated
+    status: "True"
+    type: Progressing
+  currentPodHash: 6b5cbf7465
+  currentStepHash: f64cdc9d
+  currentStepIndex: 0
+  message: more replicas need to be updated
+  observedGeneration: "3"
+  phase: Progressing
+  readyReplicas: 5
+  replicas: 5
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "3"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:25:15Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:message: {}
+        f:observedGeneration: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:27:34Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "6927"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 5
+  availableReplicas: 5
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:26:24Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "False"
+    type: Paused
+  - lastTransitionTime: "2022-01-16T09:26:25Z"
+    lastUpdateTime: "2022-01-16T09:26:25Z"
+    message: Rollout has minimum availability
+    reason: AvailableReason
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: Rollout "rollouts-demo" is progressing.
+    reason: ReplicaSetUpdated
+    status: "True"
+    type: Progressing
+  currentPodHash: 6b5cbf7465
+  currentStepHash: f64cdc9d
+  currentStepIndex: 0
+  message: more replicas need to be updated
+  observedGeneration: "3"
+  phase: Progressing
+  readyReplicas: 5
+  replicas: 5
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "3"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:25:15Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:message: {}
+        f:observedGeneration: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:27:34Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "6928"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 5
+  availableReplicas: 5
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:26:24Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "False"
+    type: Paused
+  - lastTransitionTime: "2022-01-16T09:26:25Z"
+    lastUpdateTime: "2022-01-16T09:26:25Z"
+    message: Rollout has minimum availability
+    reason: AvailableReason
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: Created new replica set "rollouts-demo-6b5cbf7465"
+    reason: NewReplicaSetCreated
+    status: "True"
+    type: Progressing
+  currentPodHash: 6b5cbf7465
+  currentStepHash: f64cdc9d
+  currentStepIndex: 0
+  message: more replicas need to be updated
+  observedGeneration: "3"
+  phase: Progressing
+  readyReplicas: 5
+  replicas: 5
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "3"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:25:15Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:message: {}
+        f:observedGeneration: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:27:34Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "6942"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 4
+  availableReplicas: 4
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:26:24Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "False"
+    type: Paused
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: ReplicaSet "rollouts-demo-6b5cbf7465" is progressing.
+    reason: ReplicaSetUpdated
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: Rollout does not have minimum availability
+    reason: AvailableReason
+    status: "False"
+    type: Available
+  currentPodHash: 6b5cbf7465
+  currentStepHash: f64cdc9d
+  currentStepIndex: 0
+  message: more replicas need to be updated
+  observedGeneration: "3"
+  phase: Progressing
+  readyReplicas: 4
+  replicas: 4
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "3"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:25:15Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:message: {}
+        f:observedGeneration: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+        f:updatedReplicas: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:27:34Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "6946"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 5
+  availableReplicas: 4
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:26:24Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "False"
+    type: Paused
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: Rollout does not have minimum availability
+    reason: AvailableReason
+    status: "False"
+    type: Available
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: ReplicaSet "rollouts-demo-6b5cbf7465" is progressing.
+    reason: ReplicaSetUpdated
+    status: "True"
+    type: Progressing
+  currentPodHash: 6b5cbf7465
+  currentStepHash: f64cdc9d
+  currentStepIndex: 0
+  message: more replicas need to be updated
+  observedGeneration: "3"
+  phase: Progressing
+  readyReplicas: 4
+  replicas: 5
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+  updatedReplicas: 1
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "3"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:25:15Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:message: {}
+        f:observedGeneration: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+        f:updatedReplicas: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:27:34Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "6959"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 5
+  availableReplicas: 5
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:26:24Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "False"
+    type: Paused
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: ReplicaSet "rollouts-demo-6b5cbf7465" is progressing.
+    reason: ReplicaSetUpdated
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout has minimum availability
+    reason: AvailableReason
+    status: "True"
+    type: Available
+  currentPodHash: 6b5cbf7465
+  currentStepHash: f64cdc9d
+  currentStepIndex: 1
+  message: more replicas need to be updated
+  observedGeneration: "3"
+  phase: Progressing
+  readyReplicas: 5
+  replicas: 5
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+  updatedReplicas: 1
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "3"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:25:15Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:controllerPause: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:message: {}
+        f:observedGeneration: {}
+        f:pauseConditions: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+        f:updatedReplicas: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:27:40Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "6960"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 5
+  availableReplicas: 5
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:26:24Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "False"
+    type: Paused
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:26:24Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: ReplicaSet "rollouts-demo-6b5cbf7465" is progressing.
+    reason: ReplicaSetUpdated
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout has minimum availability
+    reason: AvailableReason
+    status: "True"
+    type: Available
+  controllerPause: true
+  currentPodHash: 6b5cbf7465
+  currentStepHash: f64cdc9d
+  currentStepIndex: 1
+  message: CanaryPauseStep
+  observedGeneration: "3"
+  pauseConditions:
+  - reason: CanaryPauseStep
+    startTime: "2022-01-16T09:27:40Z"
+  phase: Paused
+  readyReplicas: 5
+  replicas: 5
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+  updatedReplicas: 1
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "3"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:25:15Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:controllerPause: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:message: {}
+        f:observedGeneration: {}
+        f:pauseConditions: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+        f:updatedReplicas: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:27:40Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "6961"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 5
+  availableReplicas: 5
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout has minimum availability
+    reason: AvailableReason
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: Unknown
+    type: Progressing
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "True"
+    type: Paused
+  controllerPause: true
+  currentPodHash: 6b5cbf7465
+  currentStepHash: f64cdc9d
+  currentStepIndex: 1
+  message: CanaryPauseStep
+  observedGeneration: "3"
+  pauseConditions:
+  - reason: CanaryPauseStep
+    startTime: "2022-01-16T09:27:40Z"
+  phase: Paused
+  readyReplicas: 5
+  replicas: 5
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+  updatedReplicas: 1
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "3"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:controllerPause: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:message: {}
+        f:observedGeneration: {}
+        f:pauseConditions: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+        f:updatedReplicas: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:27:40Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+      f:status:
+        f:abort: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:28:17Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "6991"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 5
+  abort: true
+  availableReplicas: 5
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout has minimum availability
+    reason: AvailableReason
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: Unknown
+    type: Progressing
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "True"
+    type: Paused
+  controllerPause: true
+  currentPodHash: 6b5cbf7465
+  currentStepHash: f64cdc9d
+  currentStepIndex: 1
+  message: CanaryPauseStep
+  observedGeneration: "3"
+  pauseConditions:
+  - reason: CanaryPauseStep
+    startTime: "2022-01-16T09:27:40Z"
+  phase: Paused
+  readyReplicas: 5
+  replicas: 5
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+  updatedReplicas: 1
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "3"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+      f:status:
+        f:abort: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:28:17Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:abortedAt: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:message: {}
+        f:observedGeneration: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+        f:updatedReplicas: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:28:17Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "6997"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 5
+  abort: true
+  abortedAt: "2022-01-16T09:28:17Z"
+  availableReplicas: 5
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout has minimum availability
+    reason: AvailableReason
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "True"
+    type: Paused
+  - lastTransitionTime: "2022-01-16T09:28:17Z"
+    lastUpdateTime: "2022-01-16T09:28:17Z"
+    message: Rollout aborted update to revision 3
+    reason: RolloutAborted
+    status: "False"
+    type: Progressing
+  currentPodHash: 6b5cbf7465
+  currentStepHash: f64cdc9d
+  currentStepIndex: 0
+  message: 'RolloutAborted: Rollout aborted update to revision 3'
+  observedGeneration: "3"
+  phase: Degraded
+  readyReplicas: 5
+  replicas: 5
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+  updatedReplicas: 1
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "3"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+      f:status:
+        f:abort: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:28:17Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:abortedAt: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:message: {}
+        f:observedGeneration: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+        f:updatedReplicas: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:28:17Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "7006"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 6
+  abort: true
+  abortedAt: "2022-01-16T09:28:17Z"
+  availableReplicas: 5
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout has minimum availability
+    reason: AvailableReason
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "True"
+    type: Paused
+  - lastTransitionTime: "2022-01-16T09:28:17Z"
+    lastUpdateTime: "2022-01-16T09:28:17Z"
+    message: Rollout aborted update to revision 3
+    reason: RolloutAborted
+    status: "False"
+    type: Progressing
+  currentPodHash: 6b5cbf7465
+  currentStepHash: f64cdc9d
+  currentStepIndex: 0
+  message: 'RolloutAborted: Rollout aborted update to revision 3'
+  observedGeneration: "3"
+  phase: Degraded
+  readyReplicas: 5
+  replicas: 6
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+  updatedReplicas: 1
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "3"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+      f:status:
+        f:abort: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:28:17Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:abortedAt: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:message: {}
+        f:observedGeneration: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:28:17Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "7011"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 5
+  abort: true
+  abortedAt: "2022-01-16T09:28:17Z"
+  availableReplicas: 4
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "True"
+    type: Paused
+  - lastTransitionTime: "2022-01-16T09:28:17Z"
+    lastUpdateTime: "2022-01-16T09:28:17Z"
+    message: Rollout aborted update to revision 3
+    reason: RolloutAborted
+    status: "False"
+    type: Progressing
+  - lastTransitionTime: "2022-01-16T09:28:17Z"
+    lastUpdateTime: "2022-01-16T09:28:17Z"
+    message: Rollout does not have minimum availability
+    reason: AvailableReason
+    status: "False"
+    type: Available
+  currentPodHash: 6b5cbf7465
+  currentStepHash: f64cdc9d
+  currentStepIndex: 0
+  message: 'RolloutAborted: Rollout aborted update to revision 3'
+  observedGeneration: "3"
+  phase: Degraded
+  readyReplicas: 4
+  replicas: 5
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Rollout","metadata":{"annotations":{},"name":"rollouts-demo","namespace":"default"},"spec":{"replicas":5,"revisionHistoryLimit":2,"selector":{"matchLabels":{"app":"rollouts-demo"}},"strategy":{"canary":{"steps":[{"setWeight":20},{"pause":{}},{"setWeight":40},{"pause":{"duration":10}},{"setWeight":60},{"pause":{"duration":10}},{"setWeight":80},{"pause":{"duration":10}}]}},"template":{"metadata":{"labels":{"app":"rollouts-demo"}},"spec":{"containers":[{"image":"argoproj/rollouts-demo:blue","name":"rollouts-demo","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"resources":{"requests":{"cpu":"5m","memory":"32Mi"}}}]}}}}
+    rollout.argoproj.io/revision: "3"
+  creationTimestamp: "2022-01-16T09:24:07Z"
+  generation: 3
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          .: {}
+          f:canary:
+            .: {}
+            f:steps: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            .: {}
+            f:containers: {}
+    manager: kubectl
+    operation: Update
+    time: "2022-01-16T09:24:07Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:template:
+          f:spec:
+            f:containers: {}
+      f:status:
+        f:abort: {}
+    manager: kubectl-argo-rollouts
+    operation: Update
+    time: "2022-01-16T09:28:17Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:rollout.argoproj.io/revision: {}
+      f:status:
+        .: {}
+        f:HPAReplicas: {}
+        f:abortedAt: {}
+        f:availableReplicas: {}
+        f:blueGreen: {}
+        f:canary: {}
+        f:conditions: {}
+        f:currentPodHash: {}
+        f:currentStepHash: {}
+        f:currentStepIndex: {}
+        f:message: {}
+        f:observedGeneration: {}
+        f:phase: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:selector: {}
+        f:stableRS: {}
+    manager: rollouts-controller
+    operation: Update
+    time: "2022-01-16T09:28:17Z"
+  name: rollouts-demo
+  namespace: default
+  resourceVersion: "7021"
+  uid: aebed3e6-858c-41e7-aa3f-60beffa6ed40
+spec:
+  replicas: 5
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause:
+          duration: 10
+      - setWeight: 60
+      - pause:
+          duration: 10
+      - setWeight: 80
+      - pause:
+          duration: 10
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - image: argoproj/rollouts-demo:red
+        name: rollouts-demo
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+status:
+  HPAReplicas: 5
+  abort: true
+  abortedAt: "2022-01-16T09:28:17Z"
+  availableReplicas: 5
+  blueGreen: {}
+  canary: {}
+  conditions:
+  - lastTransitionTime: "2022-01-16T09:27:34Z"
+    lastUpdateTime: "2022-01-16T09:27:34Z"
+    message: RolloutCompleted
+    reason: RolloutCompleted
+    status: "False"
+    type: Completed
+  - lastTransitionTime: "2022-01-16T09:27:40Z"
+    lastUpdateTime: "2022-01-16T09:27:40Z"
+    message: Rollout is paused
+    reason: RolloutPaused
+    status: "True"
+    type: Paused
+  - lastTransitionTime: "2022-01-16T09:28:17Z"
+    lastUpdateTime: "2022-01-16T09:28:17Z"
+    message: Rollout aborted update to revision 3
+    reason: RolloutAborted
+    status: "False"
+    type: Progressing
+  - lastTransitionTime: "2022-01-16T09:28:18Z"
+    lastUpdateTime: "2022-01-16T09:28:18Z"
+    message: Rollout has minimum availability
+    reason: AvailableReason
+    status: "True"
+    type: Available
+  currentPodHash: 6b5cbf7465
+  currentStepHash: f64cdc9d
+  currentStepIndex: 0
+  message: 'RolloutAborted: Rollout aborted update to revision 3'
+  observedGeneration: "3"
+  phase: Degraded
+  readyReplicas: 5
+  replicas: 5
+  selector: app=rollouts-demo
+  stableRS: 75f756d67b
